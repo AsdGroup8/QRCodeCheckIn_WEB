@@ -20,10 +20,10 @@ service.interceptors.response.use(config => {
             case 1: return Promise.reject("内部错误");
             case 70: return res;
             case 10: return Promise.reject("反序列化失败");
-            case 20: router.push({ path: '/login' }); return Promise.reject("没有登录");
+            case 2: router.push({ path: '/login' }); return Promise.reject("没有登录");
             case 30: return Promise.reject("Entity不存在");
             case 40: return Promise.reject("数据不符合要求");
-            case 50: router.push({ path: "/login" }); return Promise.reject("没有登录");
+            case 3: router.push({ path: "/login" }); return Promise.reject("没有登录");
             case 51: return Promise.reject("用户权限等级太低");
             case 60: return Promise.reject("登录信息错误");
             case 80: return Promise.reject("数据与模型无法绑定");
