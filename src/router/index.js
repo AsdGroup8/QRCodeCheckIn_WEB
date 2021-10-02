@@ -22,6 +22,15 @@ const routes = [
       auth: false,
       title: 'Login'
     }
+  },
+  {
+    path: '/customer/reg',
+    name: 'Register',
+    component: () => import('@/views/Register.vue'),
+    meta: {
+      auth: false,
+      title: 'Customer Register'
+    }
   }
 ]
 

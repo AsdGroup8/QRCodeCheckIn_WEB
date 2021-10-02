@@ -2,9 +2,9 @@
   <v-app>
     {{user_info}}
     <v-app-bar app color="indigo" dark>
-      <v-toolbar-title>💣💣Boom Fish🐟🐟</v-toolbar-title>
+      <v-toolbar-title>Movie Check-in</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-title>天天摸🐟，身体棒!!</v-toolbar-title>
+      <v-toolbar-title>Movie Ticket QR Check-in</v-toolbar-title>
       <v-spacer></v-spacer>
       <router-link to="/login" style="text-decoration:none" v-if="user_info==null">
         <v-icon>mdi-account</v-icon>

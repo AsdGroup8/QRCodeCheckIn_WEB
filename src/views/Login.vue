@@ -38,8 +38,10 @@
             </v-form>
           </v-card-text>
           <v-card-actions>
+            <v-btn color="success" href="/customer/reg">Register</v-btn>
+
             <v-spacer></v-spacer>
-            <v-btn color="primary" @click="OnClickLogin">登录</v-btn>
+            <v-btn color="primary" @click="OnClickLogin">Login</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

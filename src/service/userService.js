@@ -1,27 +1,41 @@
 import request from "../utils/request";
 
-const register = ({ name, username, password, priv_level}) => {
+// const register = ({ name, username, password, priv_level}) => {
+//     return request.request({
+//         method: 'post',
+//         url: '/user/register',
+//         data: { name, username, password, priv_level }
+//     })
+// }
+
+// TODO: 注册staff 
+const registerStaff = () => {
+
+}
+
+// TODO: 注册Customer
+const customerRegister = ({name, gender, dob, email, phone, password, address}) => {
     return request.request({
         method: 'post',
-        url: '/user/register',
-        data: { name, username, password, priv_level }
+        url: '/customer/reg',
+        data: {name, gender, dob, email, phone, password, address}
     })
 }
 
-const login = ({ username, password }) => {
+const customerLogin = ({ email, password }) => {
     return request.request({
         method: 'post',
-        url: '/user/login',
-        data: { username, password }
+        url: '/customer/auth',
+        data: { email, password }
     })
 }
 
-const info = () => {
-    return request.get('/user/profile')
+const customerInfo = () => {
+    return request.get('/customer/profile')
 }
 
 export default {
-    register,
-    login,
-    info,
+    customerRegister,
+    customerLogin,
+    customerInfo,
 }
