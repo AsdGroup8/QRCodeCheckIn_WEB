@@ -35,13 +35,14 @@ const userModule = {
             })
         },
 
-        login(context, {username, password}) {
+        login(context, {email, password}) {
             return new Promise((resolve, reject) => {
-                userService.login({ username, password }).then(res => {
+                userService.customerLogin({ email, password }).then(res => {
                     context.commit('SET_TOKEN', res.data.token);
-                    return userService.info();
+                    return userService.customerInfo();
                 }).then(res => {
-                    context.commit('SET_USER_INFO', res.data.user);
+                    console.log(res)
+                    context.commit('SET_USER_INFO', res.data);
                     resolve(res);
                 }).catch(err => {
                     reject(err);

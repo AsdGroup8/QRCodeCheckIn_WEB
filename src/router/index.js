@@ -37,7 +37,7 @@ const routes = [
     name: 'Reserve History',
     component: () => import('@/views/History.vue'),
     meta: {
-      auth: false,
+      auth: true,
       title: 'Reservation History'
     }
   }
