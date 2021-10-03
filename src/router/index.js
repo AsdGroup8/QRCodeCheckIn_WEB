@@ -31,6 +31,15 @@ const routes = [
       auth: false,
       title: 'Customer Register'
     }
+  },
+  {
+    path: '/customer/reserv/history',
+    name: 'Reserve History',
+    component: () => import('@/views/History.vue'),
+    meta: {
+      auth: false,
+      title: 'Reservation History'
+    }
   }
 ]
 
