@@ -18,7 +18,7 @@
                 :rules="[
                   () => !!username || '请输入用户名',
                   () => !!username && username.length >= 6 || '用户名必须大于6位',
-                  () => !!username && username.length <= 20 || '用户名必须小于20位'
+                  () => !!username && username.length <= 40 || '用户名必须小于20位'
                 ]"
               ></v-text-field>
 
@@ -64,11 +64,12 @@ export default {
       'login'
     ]),
     OnClickLogin() {
-      var username = this.username;
+      var email = this.username;
       var password = this.password;
       if (this.$refs['login-form'].validate()) {
-        this.login({username,password})
+        this.login({email,password})
           .then(res=>{
+            console.log(res)
             this.$router.push({path:"/"})
           }).catch(err=>{
             console.log(err)
