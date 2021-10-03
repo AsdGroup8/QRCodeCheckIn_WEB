@@ -1,23 +1,30 @@
 <template>
   <v-app>
-    {{user_info}}
+    {{ user_info }}
     <v-app-bar app color="indigo" dark>
-      <v-toolbar-title>Movie Check-in</v-toolbar-title>
+      <v-toolbar-title
+        ><router-link to="/" style="text-decoration: none">
+          Movie Check-in
+        </router-link></v-toolbar-title
+      >
       <v-spacer></v-spacer>
       <v-toolbar-title>Movie Ticket QR Check-in</v-toolbar-title>
       <v-spacer></v-spacer>
-      <router-link to="/login" style="text-decoration:none" v-if="user_info==null">
+      <router-link
+        to="/login"
+        style="text-decoration: none"
+        v-if="user_info == null"
+      >
         <v-icon>mdi-account</v-icon>
       </router-link>
       <v-menu offset-y v-if="user_info">
-        <template v-slot:activator="{on, attrs}">
+        <template v-slot:activator="{ on, attrs }">
           <v-avatar color="teal" size="42" v-on="on" v-bind="attrs">
             <!-- <span class="white--text headline">{{user_info.name[0]}}</span> -->
             <span class="white--text headline">U</span>
           </v-avatar>
         </template>
         <v-list>
-
           <v-list-item @click="OnClickLogout">
             <v-list-item-icon>
               <v-icon>mdi-logout</v-icon>
@@ -38,7 +45,6 @@
             </v-list-item-icon>
             <v-list-item-title>History</v-list-item-title>
           </v-list-item>
-
         </v-list>
       </v-menu>
     </v-app-bar>
@@ -88,7 +94,11 @@ export default {
           .then((res) => {
             this.$refs["AddUserForm"].reset();
             this.DialogAddUser = false;
-            this.$store.dispatch('message',{message:"注册成功", type:"success", timeout:3000});
+            this.$store.dispatch("message", {
+              message: "注册成功",
+              type: "success",
+              timeout: 3000,
+            });
           })
           .catch((err) => {
             console.log(err);
@@ -101,7 +111,7 @@ export default {
     },
   },
   components: {
-    'MessageBox': ()=> import("./components/MessageBox"),
-  }
+    MessageBox: () => import("./components/MessageBox"),
+  },
 };
 </script>
