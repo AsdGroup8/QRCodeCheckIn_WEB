@@ -2,25 +2,21 @@
   <v-data-iterator :items="movies" disable-pagination hide-default-footer>
     <template v-slot:default="props">
       <v-row>
-        <v-card :loading="loading" class="mx-auto my-12" max-width="374">
+        <v-card :loading="loading" class="mx-auto my-12" max-width="374" v-for="(item,index) in props.items" :key="item.id">
           <template slot="progress">
             <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
           </template>
 
-          <v-img height="250" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"></v-img>
+          <v-img height="250" src=item.poster></v-img>
 
-          <v-card-title>Cafe Badilico</v-card-title>
+          <v-card-title>{{item.title}}{{index}}</v-card-title>
 
           <v-card-text>
-            <v-row align="center" class="mx-0">
-              <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
 
-              <div class="grey--text ms-4">4.5 (413)</div>
-            </v-row>
+            <div class="my-4 text-subtitle-1">year:{{item.year}}</div>
 
-            <div class="my-4 text-subtitle-1">$ • Italian, Cafe</div>
-
-            <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+            <div>length:{{item.length}}</div>
+            <div>plot:{{item.plot}}</div>
           </v-card-text>
 
           <v-divider class="mx-4"></v-divider>
@@ -59,6 +55,41 @@ export default {
   data: () => ({
     loading: false,
     selection: 1,
+    movies : [
+      { 
+        id : '11111',
+        title :'Avatar',
+        year : 2009,
+        length : 10,
+        plot : 'aaaaaaaaaaa',
+        poster :'a.png',
+      },
+      { 
+        id : '2222',
+        title :'Unforgiven',
+        year : 1992,
+        length : 11,
+        plot : 'bbbbbbbbb',
+        poster :'b.png',
+      },
+      { 
+        id : '3333',
+        title :'Leon: The Professional',
+        year : 1994,
+        length : 12,
+        plot : 'cccccccccc',
+        poster :'c.png',
+      },
+      { 
+        id : '4444',
+        title :'The Hurt Locker',
+        year : 1994,
+        length : 13,
+        plot : 'ddddddddddddd',
+        poster :'d.png',
+      }
+    ]
+
   }),
 
   methods: {
