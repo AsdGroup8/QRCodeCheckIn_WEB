@@ -10,15 +10,15 @@
           <v-card-text>
             <v-form ref='login-form'>
               <v-text-field
-                label="Username"
+                label="Email"
                 name="login"
                 prepend-icon="mdi-account"
                 type="text"
-                v-model="username"
+                v-model="email"
                 :rules="[
-                  () => !!username || 'Enter user name',
-                  () => !!username && username.length >= 6 || 'username must bigger than 6',
-                  () => !!username && username.length <= 40 || 'username must less than 10'
+                  () => !!email || 'enter email',
+                  () => !!email && email.length >= 6 || 'email must bigger than 6',
+                  () => !!email && email.length <= 40 || 'email must less than 40'
                 ]"
               ></v-text-field>
 
@@ -32,7 +32,7 @@
                 :rules="[
                   () => !!password|| 'enter password',
                   () => !!password && password.length >= 6 || 'password must bigger than 6',
-                  () => !!password && password.length <= 20 || 'password must less than 10'
+                  () => !!password && password.length <= 20 || 'password must less than 20'
                 ]"
               ></v-text-field>
             </v-form>
@@ -55,7 +55,7 @@ export default {
   name: "Login",
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
     };
   },
@@ -64,7 +64,7 @@ export default {
       'login'
     ]),
     OnClickLogin() {
-      var email = this.username;
+      var email = this.email;
       var password = this.password;
       if (this.$refs['login-form'].validate()) {
         this.login({email,password})
