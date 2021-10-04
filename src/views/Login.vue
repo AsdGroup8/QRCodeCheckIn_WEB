@@ -10,15 +10,15 @@
           <v-card-text>
             <v-form ref='login-form'>
               <v-text-field
-                label="username"
+                label="Username"
                 name="login"
                 prepend-icon="mdi-account"
                 type="text"
                 v-model="username"
                 :rules="[
-                  () => !!username || 'Please enter your username',
-                  () => !!username && username.length >= 6 || 'Username must be greater than 6 digits',
-                  () => !!username && username.length <= 20 || 'Username must be less than 20 digits'
+                  () => !!username || 'Enter user name',
+                  () => !!username && username.length >= 6 || 'username must bigger than 6',
+                  () => !!username && username.length <= 40 || 'username must less than 10'
                 ]"
               ></v-text-field>
 
@@ -30,9 +30,9 @@
                 prepend-icon="mdi-lock"
                 type="password"
                 :rules="[
-                  () => !!password|| 'Please enter your password',
-                  () => !!password && password.length >= 6 || 'Password must be greater than 6 digits',
-                  () => !!password && password.length <= 20 || 'Password must be less than 20 digits'
+                  () => !!password|| 'enter password',
+                  () => !!password && password.length >= 6 || 'password must bigger than 6',
+                  () => !!password && password.length <= 20 || 'password must less than 10'
                 ]"
               ></v-text-field>
             </v-form>
@@ -64,11 +64,12 @@ export default {
       'login'
     ]),
     OnClickLogin() {
-      var username = this.username;
+      var email = this.username;
       var password = this.password;
       if (this.$refs['login-form'].validate()) {
-        this.login({username,password})
+        this.login({email,password})
           .then(res=>{
+            console.log(res)
             this.$router.push({path:"/"})
           }).catch(err=>{
             console.log(err)

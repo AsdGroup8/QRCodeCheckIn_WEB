@@ -39,22 +39,37 @@
                     required
                     :rules="[
                     () => !! new_account.gender || 'Gender can not be empty',
-                    () => !! new_account.gender && new_account.gender.length >= 6 || 'Gender can not be less than 2 digits'
+                    () => !! new_account.gender && new_account.gender.length >= 1 || 'Gender can not be less than 2 digits'
                   ]"
                     v-model="new_account.gender"
                   ></v-text-field>
                 </v-col>
 
                 <v-col cols="12" sm="6" md="6">
-                  <v-text-field
-                    label="dob*"
-                    required
-                    :rules="[
-                    () => !! new_account.dob || 'dob can not be empty',
-                    () => !! new_account.dob && new_account.dob.length >= 6 || 'dob can not be less than 2 digits'
-                  ]"
-                    v-model.trim="new_account.dob"
-                  ></v-text-field>
+                  
+                 <v-menu
+                  v-model="date_picker"
+                  :close-on-content-click="false"
+                  :nudge-right="40"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="auto"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-text-field
+                      v-model="new_account.dob"
+                      label="Date"
+                      prepend-icon="mdi-calendar"
+                      readonly
+                      v-bind="attrs"
+                      v-on="on"
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker
+                    v-model="new_account.dob"
+                    @input="date_picker = false"
+                  ></v-date-picker>
+                </v-menu>
                 </v-col>
 
                 <v-col cols="12" sm="6" md="6">
@@ -94,6 +109,7 @@ export default {
   },
   data() {
       return {
+        date_picker: false,
           new_account: {
             name: '',
             password: '',
