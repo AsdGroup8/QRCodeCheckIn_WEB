@@ -4,35 +4,35 @@
       <v-col cols="12" sm="8" md="4">
         <v-card class="elevation-12">
           <v-toolbar color="primary" dark flat>
-            <v-toolbar-title>登录</v-toolbar-title>
+            <v-toolbar-title>Login</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
           <v-card-text>
             <v-form ref='login-form'>
               <v-text-field
-                label="用户名"
+                label="Username"
                 name="login"
                 prepend-icon="mdi-account"
                 type="text"
                 v-model="username"
                 :rules="[
-                  () => !!username || '请输入用户名',
-                  () => !!username && username.length >= 6 || '用户名必须大于6位',
-                  () => !!username && username.length <= 40 || '用户名必须小于20位'
+                  () => !!username || 'Enter user name',
+                  () => !!username && username.length >= 6 || 'username must bigger than 6',
+                  () => !!username && username.length <= 40 || 'username must less than 10'
                 ]"
               ></v-text-field>
 
               <v-text-field
                 id="password"
-                label="密码"
+                label="password"
                 name="password"
                 v-model="password"
                 prepend-icon="mdi-lock"
                 type="password"
                 :rules="[
-                  () => !!password|| '请输入密码',
-                  () => !!password && password.length >= 6 || '密码必须大于6位',
-                  () => !!password && password.length <= 20 || '密码必须小于20位'
+                  () => !!password|| 'enter password',
+                  () => !!password && password.length >= 6 || 'password must bigger than 6',
+                  () => !!password && password.length <= 20 || 'password must less than 10'
                 ]"
               ></v-text-field>
             </v-form>

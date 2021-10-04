@@ -15,7 +15,7 @@
                     label="Name"
                     required
                     :rules="[
-                    () => !! new_account.name|| '5E Username 不能为空',
+                    () => !! new_account.name|| ' Username can not be empty',
                   ]"
                     v-model.trim="new_account.name"
                   ></v-text-field>
@@ -26,8 +26,8 @@
                     label="Password*"
                     required
                     :rules="[
-                    () => !! new_account.password || 'Password 不能为空',
-                    () => !! new_account.password && new_account.password.length >= 6 || 'Password 不能少于6位'
+                    () => !! new_account.password || 'Password can not be empty',
+                    () => !! new_account.password && new_account.password.length >= 6 || 'Password can not be less than 6 digits'
                   ]"
                     v-model.trim="new_account.password"
                   ></v-text-field>
@@ -35,26 +35,41 @@
 
                 <v-col cols="12" sm="6" md="6">
                   <v-text-field
-                    label="Steam Username*"
+                    label="Gender*"
                     required
                     :rules="[
-                    () => !! new_account.username_steam || 'Steam Username 不能为空',
-                    () => !! new_account.username_steam && new_account.username_steam.length >= 6 || 'Steam Username 不能少于6位'
+                    () => !! new_account.gender || 'Gender can not be empty',
+                    () => !! new_account.gender && new_account.gender.length >= 1 || 'Gender can not be less than 2 digits'
                   ]"
-                    v-model="new_account.username_steam"
+                    v-model="new_account.gender"
                   ></v-text-field>
                 </v-col>
 
                 <v-col cols="12" sm="6" md="6">
-                  <v-text-field
-                    label="Steam Password*"
-                    required
-                    :rules="[
-                    () => !! new_account.password_steam || 'Steam Password 不能为空',
-                    () => !! new_account.password_steam && new_account.password_steam.length >= 6 || 'Steam Password 不能少于6位'
-                  ]"
-                    v-model.trim="new_account.password_steam"
-                  ></v-text-field>
+                  
+                 <v-menu
+                  v-model="date_picker"
+                  :close-on-content-click="false"
+                  :nudge-right="40"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="auto"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-text-field
+                      v-model="new_account.dob"
+                      label="Date"
+                      prepend-icon="mdi-calendar"
+                      readonly
+                      v-bind="attrs"
+                      v-on="on"
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker
+                    v-model="new_account.dob"
+                    @input="date_picker = false"
+                  ></v-date-picker>
+                </v-menu>
                 </v-col>
 
                 <v-col cols="12" sm="6" md="6">
@@ -94,10 +109,15 @@ export default {
   },
   data() {
       return {
+        date_picker: false,
           new_account: {
             name: '',
             password: '',
+            gender: '',
+            dob:'',
+
           }
+
       }
   }
 }

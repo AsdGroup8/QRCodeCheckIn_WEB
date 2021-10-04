@@ -15,10 +15,11 @@ const registerStaff = () => {
 
 // TODO: 注册Customer
 const customerRegister = ({name, gender, dob, email, phone, password, address}) => {
+    var dob_unix = new Date(dob).getTime()
     return request.request({
         method: 'post',
         url: '/customer/reg',
-        data: {name, gender, dob, email, phone, password, address}
+        data: {name, gender, dob_unix, email, phone, password, address}
     })
 }
 
