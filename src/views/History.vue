@@ -166,7 +166,7 @@ export default {
       reservationService
         .delHistory(id)
         .then((res) => {
-          alert("Successe");
+          
           this.$store.dispatch("message", {
             message: "Reservation History Deleted",
             type: "success",

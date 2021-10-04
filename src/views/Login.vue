@@ -4,35 +4,35 @@
       <v-col cols="12" sm="8" md="4">
         <v-card class="elevation-12">
           <v-toolbar color="primary" dark flat>
-            <v-toolbar-title>登录</v-toolbar-title>
+            <v-toolbar-title>Login</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
           <v-card-text>
             <v-form ref='login-form'>
               <v-text-field
-                label="用户名"
+                label="username"
                 name="login"
                 prepend-icon="mdi-account"
                 type="text"
                 v-model="username"
                 :rules="[
-                  () => !!username || '请输入用户名',
-                  () => !!username && username.length >= 6 || '用户名必须大于6位',
-                  () => !!username && username.length <= 40 || '用户名必须小于20位'
+                  () => !!username || 'Please enter your username',
+                  () => !!username && username.length >= 6 || 'Username must be greater than 6 digits',
+                  () => !!username && username.length <= 20 || 'Username must be less than 20 digits'
                 ]"
               ></v-text-field>
 
               <v-text-field
                 id="password"
-                label="密码"
+                label="password"
                 name="password"
                 v-model="password"
                 prepend-icon="mdi-lock"
                 type="password"
                 :rules="[
-                  () => !!password|| '请输入密码',
-                  () => !!password && password.length >= 6 || '密码必须大于6位',
-                  () => !!password && password.length <= 20 || '密码必须小于20位'
+                  () => !!password|| 'Please enter your password',
+                  () => !!password && password.length >= 6 || 'Password must be greater than 6 digits',
+                  () => !!password && password.length <= 20 || 'Password must be less than 20 digits'
                 ]"
               ></v-text-field>
             </v-form>
@@ -64,12 +64,11 @@ export default {
       'login'
     ]),
     OnClickLogin() {
-      var email = this.username;
+      var username = this.username;
       var password = this.password;
       if (this.$refs['login-form'].validate()) {
-        this.login({email,password})
+        this.login({username,password})
           .then(res=>{
-            console.log(res)
             this.$router.push({path:"/"})
           }).catch(err=>{
             console.log(err)
