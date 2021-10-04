@@ -24,6 +24,15 @@ const routes = [
     }
   },
   {
+		path: '/qrcode/:id',
+		name: 'QrCode',
+		component: () => import('@/views/QRcode.vue'),
+		meta: {
+			auth: false,
+			title: 'Login'
+		}
+	},
+  {
     path: '/customer/reg',
     name: 'Register',
     component: () => import('@/views/Register.vue'),
