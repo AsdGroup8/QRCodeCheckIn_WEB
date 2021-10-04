@@ -1,20 +1,15 @@
 <template>
   <v-app>
-    {{ user_info }}
     <v-app-bar app color="indigo" dark>
-      <v-toolbar-title
-        ><router-link to="/" style="text-decoration: none">
-          Movie Check-in
-        </router-link></v-toolbar-title
-      >
+      <v-toolbar-title>
+        <router-link to="/" style="text-decoration: none;color: antiquewhite;">
+        Movie Check-in
+        </router-link>
+        </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-title>Movie Ticket QR Check-in</v-toolbar-title>
       <v-spacer></v-spacer>
-      <router-link
-        to="/login"
-        style="text-decoration: none"
-        v-if="user_info == null"
-      >
+      <router-link to="/login" style="text-decoration: none" v-if="user_info == null">
         <v-icon>mdi-account</v-icon>
       </router-link>
       <v-menu offset-y v-if="user_info">
@@ -55,7 +50,7 @@
       <MessageBox />
     </v-main>
     <v-footer color="indigo" app>
-      <span class="white--text">&copy; ReCo</span>
+      <span class="white--text">&copy; ASD Group 8</span>
     </v-footer>
   </v-app>
 </template>

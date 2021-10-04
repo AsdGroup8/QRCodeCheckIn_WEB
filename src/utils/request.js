@@ -13,21 +13,16 @@ service.interceptors.request.use((config) => {
 }, err => {
     return Promise.reject(err);
 })
+
 service.interceptors.response.use(config => {
     const res = config.data;
     if (res.code != 0) {
         switch (res.code) {
-            case 1: return Promise.reject("内部错误");
-            case 70: return res;
-            case 10: return Promise.reject("反序列化失败");
+            case 1: return Promise.reject("internal error");
             case 2: router.push({ path: '/login' }); return Promise.reject("没有登录");
-            case 30: return Promise.reject("Entity不存在");
-            case 40: return Promise.reject("数据不符合要求");
             case 3: router.push({ path: "/login" }); return Promise.reject("没有登录");
-            case 51: return Promise.reject("用户权限等级太低");
-            case 60: return Promise.reject("登录信息错误");
-            case 80: return Promise.reject("数据与模型无法绑定");
-            case 90: return Promise.reject("加密失败");
+            case 4: return Promise.reject("invalid input format")
+            case 5: return Promise.reject("invalid parameters")
             default: return Promise.reject("Unhandle Error!");
         }
     } else {

@@ -7,11 +7,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'AccountTable',
-    component: () => import("@/views/AccountTable.vue"),
+    name: 'MovieTable',
+    component: () => import("@/views/MovieTable.vue"),
     meta: {
       auth: true,
-      title: 'Boom Fish'
+      title: 'In Theater Movies'
     }
   },
   {
