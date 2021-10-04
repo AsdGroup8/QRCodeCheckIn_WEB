@@ -16,7 +16,7 @@
         <template v-slot:activator="{ on, attrs }">
           <v-avatar color="teal" size="42" v-on="on" v-bind="attrs">
             <!-- <span class="white--text headline">{{user_info.name[0]}}</span> -->
-            <span class="white--text headline">U</span>
+            <span class="white--text headline">{{user_info.name[0]}}</span>
           </v-avatar>
         </template>
         <v-list>
