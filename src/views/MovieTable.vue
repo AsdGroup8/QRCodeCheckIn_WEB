@@ -185,14 +185,20 @@ export default {
     onClickReserveMovie(index) {
       if (this.user_info) {
         var movie_id = this.movies[index].id
-        var starttime = this.new_reserv_date[index] + " " + this.new_reserv_time[index]
-        reservationService.createReservation({movie_id, starttime})
-        .then(res => {
-          console.log("success")
-        })
-        .catch(err => {
-          console.log(err)
-        })
+        var starttime = new Date(this.new_reserv_date[index] + " " + this.new_reserv_time[index]).getTime()
+        console.log(starttime)
+        reservationService.createReservation({ movie_id, starttime })
+          .then(res => {
+            this.$store.dispatch("message", {
+              message: "Reservation Create Successfully",
+              type: "success",
+              timeout: 3000,
+            });
+          })
+          .catch(err => {
+            console.log(err)
+          })
+        return
       }
       window.location.replace("/login")
     },
