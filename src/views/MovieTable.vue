@@ -184,6 +184,14 @@ export default {
   methods: {
     onClickReserveMovie(index) {
       if (this.user_info) {
+        if (this.new_reserv_date[index] == null || this.new_reserv_time[index] == null) {
+            this.$store.dispatch("message", {
+              message: "Please pick a time",
+              type: "error",
+              timeout: 3000,
+            });
+            return
+        }
         var movie_id = this.movies[index].id
         var starttime = new Date(this.new_reserv_date[index] + " " + this.new_reserv_time[index]).getTime()
         console.log(starttime)
