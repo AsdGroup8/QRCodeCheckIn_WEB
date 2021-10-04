@@ -16,9 +16,15 @@
             clearable
             flat
             solo-inverted
-            hide-details
+            type="text"
             prepend-inner-icon="mdi-magnify"
             label="Search"
+            
+             :rules="[
+                  () => !!search || 'Please fill in the movie name or reservation id',
+                  () => !!search && search.length >= 6 || 'length is less than 6',
+                  () => !!search && search.length <= 40 || 'length longer than 6'
+                ]"
           ></v-text-field>
           <template v-if="$vuetify.breakpoint.mdAndUp">
             <v-spacer></v-spacer>
@@ -79,7 +85,7 @@
               <v-card-actions>
                 <v-btn
                   text
-                  color="red"
+                  color="white"
                   @click="deleteReservation(reservation_index)"
                 >
                   Delete
@@ -156,60 +162,60 @@ export default {
       keys: ["ReservationID", "ReservationTime", "StartTime", "EndTime"],
       items: [
         {
-          movietitle: "Gon with wind",
-          reservationid: 623212,
-          reservationtime: "02/09/2021",
+          movietitle: "Venom: Let There Be Carnage",
+          reservationid: 411111,
+          reservationtime: "25/09/2021",
+          starttime: "2:00pm",
+          endtime: "3:00pm",
+        },
+        {
+          movietitle: "The Addams Family 2",
+          reservationid: 811111,
+          reservationtime: "13/09/2021",
+          starttime: "6:00pm",
+          endtime: "7:00pm",
+        },
+        {
+          movietitle: "The Many Saints of Newark",
+          reservationid: 211111,
+          reservationtime: "22/09/2021",
           starttime: "7:00pm",
           endtime: "9:00pm",
         },
         {
-          movietitle: "The Truman Show",
-          reservationid: 823212,
-          reservationtime: "02/09/2021",
-          starttime: "7:00pm",
-          endtime: "9:00pm",
+          movietitle: "Mayday",
+          reservationid: 111111,
+          reservationtime: "11/09/2021",
+          starttime: "1:00pm",
+          endtime: "3:00pm",
         },
         {
-          movietitle: "Inception",
-          reservationid: 223212,
-          reservationtime: "02/09/2021",
-          starttime: "7:00pm",
-          endtime: "9:00pm",
+          movietitle: "Titane",
+          reservationid: 511111,
+          reservationtime: "03/09/2021",
+          starttime: "8:00pm",
+          endtime: "10:00pm",
         },
         {
-          movietitle: "Frozen Yogurt",
-          reservationid: 123212,
-          reservationtime: "02/09/2021",
-          starttime: "7:00pm",
-          endtime: "9:00pm",
+          movietitle: "The Jesus Music",
+          reservationid: 611111,
+          reservationtime: "12/09/2021",
+          starttime: "9:00pm",
+          endtime: "11:00pm",
         },
         {
-          movietitle: "Frozen Yogurt",
-          reservationid: 523212,
-          reservationtime: "02/09/2021",
-          starttime: "7:00pm",
-          endtime: "9:00pm",
+          movietitle: "Old Henry",
+          reservationid: 711111,
+          reservationtime: "17/09/2021",
+          starttime: "4:00pm",
+          endtime: "5:00pm",
         },
         {
-          movietitle: "Frozen Yogurt",
-          reservationid: 633212,
-          reservationtime: "02/09/2021",
-          starttime: "7:00pm",
-          endtime: "9:00pm",
-        },
-        {
-          movietitle: "Frozen Yogurt",
-          reservationid: 723212,
-          reservationtime: "02/09/2021",
-          starttime: "7:00pm",
-          endtime: "9:00pm",
-        },
-        {
-          movietitle: "Frozen Yogurt",
-          reservationid: 823212,
-          reservationtime: "02/09/2021",
-          starttime: "7:00pm",
-          endtime: "9:00pm",
+          movietitle: "Love Actually",
+          reservationid: 911111,
+          reservationtime: "27/09/2021",
+          starttime: "3:00pm",
+          endtime: "5:00pm",
         },
       ],
     };
