@@ -3,6 +3,7 @@ FROM node:lts-alpine3.14 AS compiler
 ADD . /
 
 WORKDIR / 
+RUN npm --registry https://registry.npm.taobao.org install 
 RUN npm run build
 
 # RUNNING
