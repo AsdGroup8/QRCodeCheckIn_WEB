@@ -10,7 +10,7 @@ const routes = [
     name: 'MovieTable',
     component: () => import("@/views/MovieTable.vue"),
     meta: {
-      auth: true,
+      auth: false,
       title: 'In Theater Movies'
     }
   },
