@@ -1,4 +1,49 @@
 <template>
+<div>
+
+  <div class="text-center">
+    <v-dialog
+      v-model="qrdialog"
+      width="500"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="red lighten-2"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          Close
+        </v-btn>
+      </template>
+
+      <v-card>
+        <v-card-title class="text-h5 grey lighten-2">
+          Reservation QR Code
+        </v-card-title>
+
+   <v-img
+      height="250"
+      src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fremote.yunnan.cn%2Fqr%2Fphp%2Fqr.php%3Fd%3Dhttps%3A%2F%2Fyn.yunnan.cn%2Fsystem%2F2021%2F09%2F26%2F031685403.shtml&refer=http%3A%2F%2Fremote.yunnan.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637795403&t=cb986380f39701c89ee86d1892bf9a27"
+    ></v-img>
+
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="dialog = false"
+          >
+            I accept
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
+
   <v-data-iterator :items="movies" disable-pagination hide-default-footer>
     <template v-slot:default="props">
       <v-row>
@@ -105,6 +150,10 @@
       </v-row>
     </template>
   </v-data-iterator>
+
+</div>
+
+  
 </template>
 
 
@@ -115,6 +164,7 @@ import reservationService from "../service/reservationService";
 import { mapState } from "vuex";
 export default {
   data: () => ({
+    qrdialog: false,
     loading: false,
     new_reserv_date: [],
     new_reserv_time: [],
@@ -202,6 +252,7 @@ export default {
               type: "success",
               timeout: 3000,
             });
+            this.qrdialog = true;
           })
           .catch(err => {
             console.log(err)
